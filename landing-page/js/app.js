@@ -31,11 +31,14 @@ const sectionList=Array.from(sections);
 // get the active section
 let active_d = document.querySelector(".your-active-class");  
 
+
 /**
  * End Global Variables
  * Start Helper Functions
  * 
 */
+
+
 
 /**
  * End Helper Functions
@@ -51,6 +54,7 @@ sections.forEach(section => {
   navigation.innerHTML += `<li><a class="menu__link" href="#${id}">${nav}</a></li>`;
 
 });
+
 
 // Add class 'active' to section when near top of viewport 
 
@@ -72,6 +76,7 @@ const isElementInViewport  = (element) =>{
     flag = -1 ;
   };    
   return {'inview':isInView, 'flag':flag} ;
+
 };
 
 // remove the active class
@@ -79,17 +84,16 @@ const removeActive = (element) => {
   element.classList.remove('your-active-class');
   element.style.cssText = "background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);";
 };
-
 // adding the active class
 const addActive = (element) => {
-  element.classList.add('your-active-class');
-  element.style.cssText = "background-color: burlywood";
+ 
+    element.classList.add('your-active-class');
+    element.style.cssText = "background-color: burlywood";
   
 };
-
 //scroll listening function
 const scrollAction = () =>{
-  
+
   // get the active element index in divlist
   let index = sectionList.indexOf(active_d);
   const InView = isElementInViewport(active_d);
@@ -120,20 +124,25 @@ const scrollAction = () =>{
 
 const navbarAction = (event) =>{
   //get the clicked navbar element
-  const activeNav = event.target；
-  //if the navbar has "link_click" (has been clicked) ,remove the class 
+  const activeNav = event.target
+  console.log(activeNav)
+  if(activeNav.classList.contains("menu__link")){
+    //if the navbar has "link_click" (has been clicked) ,remove the class 
   if(document.querySelector(".link_click")!= null){
-    document.querySelector(".link_click").classList.remove("link_click")；
-  }； 
+    document.querySelector(".link_click").classList.remove("link_click")
+  } 
   // add the "link_click" class to clicked navbar  
-  activeNav.classList.add("link_click")；
+  activeNav.classList.add("link_click") 
  
   //get the  clicked navbar's "href" value, "href" is the active section's id, use it to set the section to active
   const section_id = activeNav.getAttribute("href");
-  addActive( document.querySelector(section_id))；
+  addActive( document.querySelector(section_id))
+  }
+  
 
 }
 // add listener on scroll
 window.addEventListener('scroll',scrollAction);
 //add listener on nav bar
 navigation.addEventListener('click', navbarAction);
+
