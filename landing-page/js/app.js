@@ -125,18 +125,21 @@ const scrollAction = () =>{
 const navbarAction = (event) =>{
   //get the clicked navbar element
   const activeNav = event.target
-  console.log(activeNav)
+  
+  //only when click <a><a> element do it, if <ul> is clicked and the <a> is not clicked , do nothing
   if(activeNav.classList.contains("menu__link")){
+    
     //if the navbar has "link_click" (has been clicked) ,remove the class 
-  if(document.querySelector(".link_click")!= null){
-    document.querySelector(".link_click").classList.remove("link_click")
-  } 
-  // add the "link_click" class to clicked navbar  
-  activeNav.classList.add("link_click") 
+    if(document.querySelector(".link_click")!= null){  
+        document.querySelector(".link_click").classList.remove("link_click")
+    } 
+    
+    // add the "link_click" class to clicked navbar  
+    activeNav.classList.add("link_click") 
  
-  //get the  clicked navbar's "href" value, "href" is the active section's id, use it to set the section to active
-  const section_id = activeNav.getAttribute("href");
-  addActive( document.querySelector(section_id))
+    //get the  clicked navbar's "href" value, "href" is the active section's id, use it to set the section to active
+    const section_id = activeNav.getAttribute("href");
+    addActive( document.querySelector(section_id))
   }
   
 
