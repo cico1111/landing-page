@@ -87,7 +87,11 @@ section {
     color: #fff;
     transition: ease 0.3s all;
 }
-
+.link_click{
+    background:#333;
+    color:#fff !important;
+  
+}
 /* Header Styles */
 .page__header {
     background: #fff;
